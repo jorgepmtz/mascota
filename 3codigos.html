@@ -1,0 +1,50 @@
+## **Cambio 1 — Agregar `id` al botón COTIZAR en `quote.html` (línea 583):**
+
+python3 << 'EOF'
+with open('/home/mascota/mascota/templates/public/quote.html', 'r') as f:
+    content = f.read()
+
+content = content.replace(
+    'onclick="quote()">\n                                    COTIZAR',
+    'id="btn-cotizar" onclick="quote()">\n                                    COTIZAR'
+)
+
+with open('/home/mascota/mascota/templates/public/quote.html', 'w') as f:
+    f.write(content)
+print("✅ id btn-cotizar agregado en quote.html")
+EOF
+
+
+
+## **Cambio 1 — Agregar `id` al botón COTIZAR en `quote.html` (línea 583):**
+
+python3 << 'EOF'
+with open('/home/mascota/mascota/templates/public/quote.html', 'r') as f:
+    content = f.read()
+
+content = content.replace(
+    "let href = document.getElementById('modal-href')\n                    href.setAttribute('href', base_url + \"/mascota/quote/download?id=\" + res['id'])",
+    "window.dataLayer = window.dataLayer || [];\n                    window.dataLayer.push({'event': 'quote_success', 'plan': document.querySelector('[name=drpPaquete]').value});\n                    let href = document.getElementById('modal-href')\n                    href.setAttribute('href', base_url + \"/mascota/quote/download?id=\" + res['id'])"
+)
+
+with open('/home/mascota/mascota/templates/public/quote.html', 'w') as f:
+    f.write(content)
+print("✅ dataLayer.push quote_success agregado en quote.html")
+EOF
+
+
+## **Cambio 3 — Mismo `dataLayer.push` en `form.html`:**
+
+python3 << 'EOF'
+with open('/home/mascota/mascota/templates/form.html', 'r') as f:
+    content = f.read()
+
+content = content.replace(
+    "let href = document.getElementById('modal-href')\n                href.setAttribute('href', base_url + \"/quote/download?id=\" + res['id'])",
+    "window.dataLayer = window.dataLayer || [];\n                window.dataLayer.push({'event': 'quote_success'});\n                let href = document.getElementById('modal-href')\n                href.setAttribute('href', base_url + \"/quote/download?id=\" + res['id'])"
+)
+
+with open('/home/mascota/mascota/templates/form.html', 'w') as f:
+    f.write(content)
+print("✅ dataLayer.push quote_success agregado en form.html")
+EOF

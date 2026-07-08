@@ -1,0 +1,732 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <style>
+        .error-label {
+            font-size: 12px;
+            color: indianred;
+        }
+    </style>
+
+    <div id="layout-menu-mask" onclick="layout_menu()"></div>
+    <div id="layout-menu-mobile">
+        <div class="menu menu-selected">
+            <a href="#planes" onclick="layout_menu()">
+                Planes
+            </a>
+        </div>
+        <div class="menu menu-selected">
+            <a href="#como" onclick="layout_menu()">
+                ¿Cómo funciona?
+            </a>
+        </div>
+        <div class="menu menu-selected">
+            <a href="#cotiza" onclick="layout_menu()">
+                Cotiza ahora
+            </a>
+        </div>
+        <div class="menu menu-selected">
+            <div class="button-siniestro" onclick="sinistro_modal.show()">
+                En caso de siniestro
+            </div>
+        </div>
+
+    </div>
+
+    <header id="header">
+        <div class="text-primary">
+            <a href='#home'>
+                <img id="header-img" src="{% static "img/logo_blue.png" %}" style="height: 50px"/>
+            </a>
+            <span id="header-title">Mascota Segura</span>
+        </div>
+        <div class="float-end button-siniestro hide-mobile" onclick="sinistro_modal.show()">
+            En caso de siniestro
+        </div>
+        <div class="float-end header-menu">
+            <a href="#cotiza">
+                Cotiza ahora
+            </a>
+        </div>
+        <div class="float-end header-menu">
+            <a href="#planes">
+                Planes
+            </a>
+        </div>
+        <div class="float-end header-menu">
+            <a href="#como">
+                ¿Cómo funciona?
+            </a>
+        </div>
+
+        <div id="layout-menu-icon" onclick="layout_menu()">
+            <span class="material-symbols-outlined text-primary" style="">menu</span>
+        </div>
+    </header>
+    <div class="min-h-screen flex flex-col main-content">
+
+        <div style="width: 100%; height: 80px"></div>
+        <main class="overflow-x-hidden">
+            <section class="p-4 @container" id="home">
+                <div class="relative overflow-hidden rounded-xl bg-cream-bg dark:bg-navy-dark/30 min-h-[420px] flex flex-col justify-end p-6 md:p-10">
+                    <div class="absolute inset-0 z-0">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-dark/60 via-transparent to-transparent"></div>
+                        <img alt="Happy dogs playing in a field" class="w-full h-full object-cover"
+                             src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9RZ2eWMJLaNwD6YAmpWMG__zS1cFh_aDkNft24JKuTK1ZzxSkjoUfzZrBADHxf1EeCLzMfVhy228KOqWMv3XMJkdjdm-NmgDkZuFozy-twQfIOGmXsopuaTyc_1Wp6Az6pfDDW8mcOBrragP9UevVejlkxkJrcLfXAC1LdWBzaq8XSQ91MhH4EhM6hZxQh9LKJ90SeYZj0GL4uJE8CoPlGoj_404gC0v45zpomRbM29T0Gv6BuXr9Mr23Xyr6kUB6atBwcCJoTQMX"/>
+                    </div>
+                    <div class="relative z-10 flex flex-col gap-4 max-w-xl">
+                        <h1 class="text-white text-4xl font-black leading-tight tracking-tight md:text-5xl">
+                            ¿Protegemos a tu mascota hoy?
+                        </h1>
+                        <p class="text-white/90 text-base md:text-lg font-normal leading-relaxed">
+                            Seguro integral para perros en México. Tranquilidad para ti, salud y felicidad para ellos.
+                        </p>
+                        <div class="flex flex-wrap gap-3 mt-4">
+                            <a class="bg-primary text-white px-6 py-3 rounded-lg font-bold text-center hover:bg-teal-accent transition-all"
+                               href="#planes">
+                                Ver Coberturas
+                            </a>
+                            <a class="bg-white/20 backdrop-blur-md text-white border border-white/30 px-6 py-3 rounded-lg font-bold text-center hover:bg-white/30 transition-all"
+                               href="#cotiza">
+                                Cotizar ahora
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="mt-8 mb-8" id="como">
+                <div class="px-4">
+                    <h2 class="text-navy-dark dark:text-white text-2xl font-bold leading-tight">
+                        ¿Como funciona?
+                    </h2>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mt-4" style="padding: 20px">
+                    <div class="flex flex-col items-center">
+                        <div class="how-works">
+                            <br/>
+                            <span class="how-works-number">
+                                1
+                            </span>
+                            <br/>
+                            <br/>
+                            <span class="how-works-title">
+                                Elige un plan
+                            </span>
+                            <div class="how-works-text">
+                                Revisa nuestras coberturas y selecciona la que mejor se adapte a tus necesidades.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="how-works">
+                            <br/>
+                            <span class="how-works-number">
+                                2
+                            </span>
+                            <br/>
+                            <br/>
+                            <span class="how-works-title">
+                                Cotiza ahora
+                            </span>
+                            <div class="how-works-text">
+                                Ingresa los datos de tu peludo para obtener el precio exacto de tu protección.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="how-works">
+                            <br/>
+                            <span class="how-works-number">
+                                3
+                            </span>
+                            <br/>
+                            <br/>
+                            <span class="how-works-title">
+                                Emite y paga
+                            </span>
+                            <div class="how-works-text">
+                                Genera tu póliza digital de forma inmediata y realiza el pago seguro en línea.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="how-works">
+                            <br/>
+                            <span class="how-works-number">
+                                4
+                            </span>
+                            <br/>
+                            <br/>
+                            <span class="how-works-title">
+                                Recibe la confirmación
+                            </span>
+                            <div class="how-works-text">
+                                Recibe tu póliza y empieza a disfrutar de la tranquilidad de estar protegido.
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+            <div style="width: 100%; height: 50px"></div>
+            <section class="mt-8" id="planes">
+                <div class="px-4">
+                    <h2 class="text-navy-dark dark:text-white text-2xl font-bold leading-tight">Nuestros Planes</h2>
+                    <p class="text-gray-500 dark:text-gray-400 mt-1">Elige la protección que mejor se adapte a tu mejor
+                        amigo.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 px-4 py-6">
+                    <div class="flex flex-col gap-4 rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-background-dark/50 p-6 shadow-sm">
+                        <div class="flex flex-col gap-1">
+                            <h1 class="text-gray-500 dark:text-gray-400 text-sm font-bold uppercase tracking-wider">
+                                Básico</h1>
+
+                        </div>
+                        <div class="price">
+                            <div class="title">
+                                DESDE
+                            </div>
+                            <span class="number">
+                                $145
+                            </span>
+                            <span class="title">/anual</span>
+                        </div>
+                        <button class="w-full py-3 rounded-lg bg-background-light dark:bg-gray-800 text-navy-dark dark:text-white
+                        text-sm font-bold hover:bg-gray-200 dark:hover:bg-gray-700 transition-all"
+                                onclick="select_plan_scroll('38301')">
+                            Elegir Básico
+                        </button>
+                        <div class="flex flex-col gap-3 mt-2">
+                            <div class="text-sm font-medium flex gap-3 items-center"><span
+                                    class="material-symbols-outlined text-teal-accent text-lg">check_circle</span>
+                                Muerte o sacrificio forzoso: $5,000
+                            </div>
+                            <div class="text-sm font-medium flex gap-3 items-center"><span
+                                    class="material-symbols-outlined text-teal-accent text-lg">check_circle</span>
+                                Gastos funerarios: $1,000 (1 año espera)
+                            </div>
+                            <div class="text-sm font-medium flex gap-3 items-center"><span
+                                    class="material-symbols-outlined text-teal-accent text-lg">check_circle</span>
+                                Daños a terceros: $1,500
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-4 rounded-xl border border-primary/30 bg-white dark:bg-background-dark/50 p-6 shadow-lg relative overflow-hidden">
+                        <div class="absolute top-0 right-0 bg-primary text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg">
+                            POPULAR
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <h1 class="text-primary text-sm font-bold uppercase tracking-wider">Premium</h1>
+                        </div>
+                        <div class="price">
+                            <div class="title">
+                                DESDE
+                            </div>
+                            <span class="number">
+                                $377
+                            </span>
+                            <span class="title">/anual</span>
+                        </div>
+                        <button class="w-full py-3 rounded-lg bg-primary text-white text-sm font-bold hover:bg-teal-accent transition-all"
+                                onclick="select_plan_scroll('38302')">
+                            Elegir Premium
+                        </button>
+                        <div class="flex flex-col gap-3 mt-2">
+                            <div class="text-sm font-medium flex gap-3 items-center"><span
+                                    class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                                Muerte o sacrificio forzoso: $15,000
+                            </div>
+                            <div class="text-sm font-medium flex gap-3 items-center">
+                                <span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                                Gastos funerarios: $1,500
+                            </div>
+                            <div class="text-sm font-medium flex gap-3 items-center"><span
+                                    class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                                Daños a terceros: $2,000
+                            </div>
+                            <div class="text-sm font-medium flex gap-3 items-center"><span
+                                    class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                                Gastos de búsqueda: $1,000
+                            </div>
+                            <div class="text-sm font-medium flex gap-3 items-center"><span
+                                    class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                                Gastos por accidentes: $2,000
+                            </div>
+                            <div class="text-sm font-medium flex gap-3 items-center"><span
+                                    class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                                Hospedaje del animal: $2,000
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-4 rounded-xl border border-navy-dark/10 dark:border-white/10 bg-navy-dark text-white p-6 shadow-sm">
+                        <div class="flex flex-col gap-1">
+                            <h1 class="text-light-blue text-sm font-bold uppercase tracking-wider">Plus</h1>
+                        </div>
+                        <div class="price">
+                            <div class="title">
+                                DESDE
+                            </div>
+                            <span class="number" style="color: white !important;">
+                                $1,450
+                            </span>
+                            <span class="title">/anual</span>
+                        </div>
+                        <button class="w-full py-3 rounded-lg bg-white/10 border border-white/20 text-white text-sm
+                        font-bold hover:bg-white/20 transition-all" onclick="select_plan_scroll('38303')">
+                            Elegir Plus
+                        </button>
+                        <div class="flex flex-col gap-3 mt-2">
+                            <div class="text-sm font-medium flex gap-3 items-center"><span
+                                    class="material-symbols-outlined text-light-blue text-lg">check_circle</span>
+                                Muerte o sacrificio forzoso: $35,000
+                            </div>
+                            <div class="text-sm font-medium flex gap-3 items-center"><span
+                                    class="material-symbols-outlined text-light-blue text-lg">check_circle</span>
+                                Gastos funerarios: $2,000
+                            </div>
+                            <div class="text-sm font-medium flex gap-3 items-center"><span
+                                    class="material-symbols-outlined text-light-blue text-lg">check_circle</span>
+                                Daños a terceros: $15,000
+                            </div>
+                            <div class="text-sm font-medium flex gap-3 items-center"><span
+                                    class="material-symbols-outlined text-light-blue text-lg">check_circle</span>
+                                Gastos de búsqueda: $2,000
+                            </div>
+                            <div class="text-sm font-medium flex gap-3 items-center"><span
+                                    class="material-symbols-outlined text-light-blue text-lg">check_circle</span>
+                                Gastos por accidentes: $5,000
+                            </div>
+                            <div class="text-sm font-medium flex gap-3 items-center"><span
+                                    class="material-symbols-outlined text-light-blue text-lg">check_circle</span>
+                                Hospedaje del animal: $3,000
+                            </div>
+                            <div class="text-sm font-medium flex gap-3 items-center"><span
+                                    class="material-symbols-outlined text-light-blue text-lg">check_circle</span>
+                                Enf. no prevenibles: $5,000
+                            </div>
+                            <div class="text-sm font-medium flex gap-3 items-center"><span
+                                    class="material-symbols-outlined text-light-blue text-lg">check_circle</span>
+                                Robo con violencia: $35,000
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="plans-note" style="text-align: center">
+                    NOTA: Para los planes PREMIUN y PLUS tu mascota debe contar con Pedigree y Microchip
+                </div>
+                <div class="px-4 py-8">
+                    <h3 class="text-lg font-bold mb-4">Coberturas</h3>
+                    <div class="flex flex-col gap-2">
+                        <details
+                                class="group bg-white dark:bg-navy-dark/20 rounded-lg border border-gray-100 dark:border-gray-800 overflow-hidden"
+                                name="detalles" open="">
+                            <summary class="flex items-center justify-between p-4 cursor-pointer list-none">
+                            <span class="font-bold flex items-center gap-3">
+                                                Muerte o sacriﬁcio forzoso.
+                            </span>
+                                <span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+                            </summary>
+                            <div class="p-4 pt-0 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                                Cubre la muerte o sacriﬁcio por accidente. En el paquete Plus se ampararán además
+                                como causa de sacrificio forzoso, enfermedades crónicas y degenerativas no
+                                prevenibles (período de espera de 6 meses).
+                            </div>
+                        </details>
+                        <details
+                                class="group bg-white dark:bg-navy-dark/20 rounded-lg border border-gray-100 dark:border-gray-800 overflow-hidden"
+                                name="detalles">
+                            <summary class="flex items-center justify-between p-4 cursor-pointer list-none">
+                                <span class="font-bold flex items-center gap-3">
+                                                Gastos funerarios
+                                            </span>
+                                <span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+                            </summary>
+                            <div class="p-4 pt-0 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                                Apoyo económico para gastos de incineración en caso de fallecimiento (período
+de espera de 1 año en plan Básico).
+                            </div>
+                        </details>
+                        <details
+                                class="group bg-white dark:bg-navy-dark/20 rounded-lg border border-gray-100 dark:border-gray-800 overflow-hidden"
+                                name="detalles">
+                            <summary class="flex items-center justify-between p-4 cursor-pointer list-none">
+                                <span class="font-bold flex items-center gap-3">
+
+                                                Gastos médicos de terceros por ataque del perro
+                                            </span>
+                                <span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+                            </summary>
+                            <div class="p-4 pt-0 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                                Atención médica de la persona que lesione el perro.
+                            </div>
+                        </details>
+                        <details
+                                class="group bg-white dark:bg-navy-dark/20 rounded-lg border border-gray-100 dark:border-gray-800 overflow-hidden"
+                                name="detalles">
+                            <summary class="flex items-center justify-between p-4 cursor-pointer list-none">
+                <span class="font-bold flex items-center gap-3">
+                    Gastos de búsqueda en caso de extravío
+                                            </span>
+                                <span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+                            </summary>
+                            <div class="p-4 pt-0 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                                Se da aviso a la compañía y se reembolsan los gastos por impresiones, anuncios, etc.
+                            </div>
+                        </details>
+                        <details
+                                class="group bg-white dark:bg-navy-dark/20 rounded-lg border border-gray-100 dark:border-gray-800 overflow-hidden"
+                                name="detalles">
+                            <summary class="flex items-center justify-between p-4 cursor-pointer list-none">
+                <span class="font-bold flex items-center gap-3">
+                                                Gastos médicos por accidente
+                                            </span>
+                                <span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+                            </summary>
+                            <div class="p-4 pt-0 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                                Acude con su médico de conﬁanza y se reembolsan los gastos efectuados.
+                            </div>
+                        </details>
+                        <details
+                                class="group bg-white dark:bg-navy-dark/20 rounded-lg border border-gray-100 dark:border-gray-800 overflow-hidden"
+                                name="detalles">
+                            <summary class="flex items-center justify-between p-4 cursor-pointer list-none">
+                <span class="font-bold flex items-center gap-3">
+                                                Hospedaje del perro en caso de hospitalización del propietario
+                                            </span>
+                                <span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+                            </summary>
+                            <div class="p-4 pt-0 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                                Cubrimos los gastos de una pensión canina si el dueño es hospitalizado y no tiene quién cuide de su mascota.
+                            </div>
+                        </details>
+                        <details class="group bg-white dark:bg-navy-dark/20 rounded-lg border border-gray-100 dark:border-gray-800 overflow-hidden">
+                            <summary class="flex items-center justify-between p-4 cursor-pointer list-none">
+                                <span class="font-bold flex items-center gap-3">
+                                    Gastos médicos por enfermedades no prevenibles
+                                </span>
+                                <span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+                            </summary>
+                            <div class="p-4 pt-0 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                                Protección contra padecimientos que no pudieron evitarse mediante vacunación o desparasitación regular.
+                            </div>
+                        </details>
+                        <details class="group bg-white dark:bg-navy-dark/20 rounded-lg border border-gray-100 dark:border-gray-800 overflow-hidden">
+                            <summary class="flex items-center justify-between p-4 cursor-pointer list-none">
+                                <span class="font-bold flex items-center gap-3">
+                                    Robo con violencia
+                                </span>
+                                <span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+                            </summary>
+                            <div class="p-4 pt-0 text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+                                Indemnización en caso de robo de la mascota mediante el uso de fuerza o violencia física.
+                            </div>
+                        </details>
+                    </div>
+                </div>
+            </section>
+            <section class="bg-cream-bg dark:bg-background-dark/30 py-12 px-4" id="cotiza">
+                <div class="max-w-4xl mx-auto">
+                    <div class="text-center mb-10">
+                        <h2 class="text-2xl font-black text-navy-dark dark:text-white">Inicia tu registro</h2>
+                        <p class="text-gray-500 mt-2">Completa los datos para personalizar tu cobertura.</p>
+                    </div>
+                    <div class="md:col-span-2 flex flex-col items-center mt-4 w-full">
+                        <div class="bg-primary/5 border-2 border-primary/20 p-8 rounded-2xl w-full max-w-xl text-center shadow-inner mb-8">
+                                <span class="text-primary text-xs font-black uppercase tracking-[0.2em] block mb-6">
+                                    Elije tu plan
+                                </span>
+                            <div class="mb-8">
+                                <select class="w-full rounded-lg border-gray-200 dark:border-gray-700 dark:bg-gray-800 quote"
+                                        name="drpPaquete"
+                                        onchange="select_plan(this)" id="select-plan">
+                                    <option value="38301" data-min="1500" data-max="5000">BASICO</option>
+                                    <option value="38302" data-min="5000" data-max="15000">PREMIUM</option>
+                                    <option value="38303" data-min="15000" data-max="35000">PLUS</option>
+                                </select>
+                            </div>
+                            <div class="mb-8">
+                                <span class="text-primary text-xs font-black uppercase tracking-[0.2em] mt-4 block mb-6">
+                                    SUMA MÁXIMA ASEGURADA
+                                </span>
+                                    <span class="text-navy-dark dark:text-white text-3xl font-black">$<span
+                                            id="amount-text">1,500.00</span> <span class="text-lg">MXN</span></span>
+                            </div>
+                            <div class="relative px-4">
+                                <input class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer
+                                            dark:bg-gray-700 accent-primary quote"
+                                       id="input-amount" max="5000" min="1500" step="100" type="range" value="1500"
+                                       oninput="select_amount(this)" name="amount"/>
+                                <div class="flex justify-between text-[10px] font-bold text-gray-400 mt-4 uppercase tracking-tighter">
+                                    <span id="amount-min">Min: $1,000</span>
+                                    <span id="amount-max">Max: $5,000</span>
+                                </div>
+                            </div>
+                            <p class="text-xs text-gray-500 mt-6 italic">
+                                La suma máxima asegurada no es lo que tu pagas por la póliza, es la suma que cubre a tu mascota
+                                en caso de siniestro.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="bg-white dark:bg-navy-dark/50 p-6 rounded-xl border border-gray-100 dark:border-gray-800 shadow-sm flex flex-col gap-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="material-symbols-outlined text-primary">person</span>
+                                <h3 class="font-bold uppercase text-xs tracking-widest text-gray-500">Contratante</h3>
+                            </div>
+                            <div>
+                                <span class="text-xs font-bold mb-1 block">
+                                    Nombre(s): <span class="error-label" id="name-error"></span>
+                                </span>
+                                <input class="w-full rounded-lg border-gray-200 dark:border-gray-700 dark:bg-gray-800 quote"
+                                       data-check-empty="true" name="name" autocomplete="off"/>
+                            </div>
+                            <div>
+                                <span class="text-xs font-bold mb-1 block">Primer apellido: <span class="error-label"
+                                                                                                  id="last_name-error"></span></span>
+                                <input class="w-full rounded-lg border-gray-200 dark:border-gray-700 dark:bg-gray-800 quote"
+                                       data-check-empty="true" name="last_name"
+                                       autocomplete="off"/>
+                            </div>
+                            <div>
+                                <span class="text-xs font-bold mb-1 block">Correo electrónico: <span class="error-label"
+                                                                                                     id="email-error"></span></span>
+                                <input type="email"
+                                       class="w-full rounded-lg border-gray-200 dark:border-gray-700 dark:bg-gray-800 quote"
+                                       name="email" data-check-empty="true"
+                                       autocomplete="off"/>
+                            </div>
+
+                            <div>
+                                <span class="text-xs font-bold mb-1 block">Teléfono:</span>
+                                <input class="w-full rounded-lg border-gray-200 dark:border-gray-700 dark:bg-gray-800 quote"
+                                       name="phone" autocomplete="off"/>
+                            </div>
+                        </div>
+                        <div class="bg-white dark:bg-navy-dark/50 p-6 rounded-xl border border-gray-100 dark:border-gray-800 shadow-sm flex flex-col gap-4">
+                            <div class="flex items-center gap-2 mb-2">
+                                <span class="material-symbols-outlined text-primary">pets</span>
+                                <h3 class="font-bold uppercase text-xs tracking-widest text-gray-500">Mascota</h3>
+                            </div>
+                            <div>
+                                <label class="text-xs font-bold mb-1 block">Nombre de tu Perro: <span
+                                        class="error-label" id="pet_name-error"></span></label>
+                                <input class="w-full rounded-lg border-gray-200 dark:border-gray-700 dark:bg-gray-800 quote"
+                                       name="pet_name" autocomplete="off"
+                                       data-check-empty="true"/>
+                            </div>
+                            <div class="grid grid-cols-2 gap-3">
+                                <div>
+                                    <label class="text-xs font-bold mb-1 block">
+                                        Raza
+                                        <span class="error-label" id="breed-error"></span>
+                                    </label>
+                                    <select class="w-full rounded-lg border-gray-200 dark:border-gray-700 dark:bg-gray-800
+                                    quote" name="breed" data-check-empty="true">
+                                        <option value="">--SELECCIONA--</option>
+                                        {% for breed in cat_breed %}
+                                            <option value="{{ breed.key }}">
+                                                {{ breed.value }}
+                                            </option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="text-xs font-bold mb-1 block">
+                                        Sexo
+                                        <span class="error-label" id="gender-error"></span>
+                                    </label>
+                                    <select class="w-full rounded-lg border-gray-200 dark:border-gray-700 dark:bg-gray-800 quote"
+                                            name="gender" data-check-empty="true">
+                                        <option value="">--SELECCIONA--</option>
+                                        <option value="H">HEMBRA</option>
+                                        <option value="M">MACHO</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-3">
+                                <div>
+                                    <label class="text-xs font-bold mb-1 block">Edad
+                                        <span class="error-label" id="age-error"></span>
+                                    </label>
+                                    <select class="w-full rounded-lg border-gray-200 dark:border-gray-700 dark:bg-gray-800 quote"
+                                            data-check-empty="true" name="age">
+                                        <option value="">--SELECCIONA--</option>
+                                        {% for age in ages %}
+                                            <option value="{{ age.code }}">
+                                                {{ age.name }}
+                                            </option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="text-xs font-bold mb-1 block">Peso
+                                        <span class="error-label" id="weight-error"></span>
+                                    </label>
+                                    <select class="w-full rounded-lg border-gray-200 dark:border-gray-700 dark:bg-gray-800 quote"
+                                            data-check-empty="true" name="weight">
+                                        <option value="">--SELECCIONA--</option>
+                                        {% for weight in weights %}
+                                            <option value="{{ weight.code }}">
+                                                {{ weight.name }}
+                                            </option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="md:col-span-2 flex flex-col items-center mt-4 w-full">
+                            <button class="mt-8 bg-primary hover:bg-teal-accent text-white font-black text-lg py-4 px-12
+                                rounded-xl shadow-xl shadow-primary/20 transition-all w-full max-w-sm"
+                                    onclick="quote()">
+                                Cotiza Ahora
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div class="modal" id="quote-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="">Aviso</h1>
+                </div>
+                <div class="modal-body">
+                    Te enviamos un correo con la cotización, también la puedes descargar aquí:<br/><br/>
+                    <a class='href' href="" id="modal-href">
+                        <button class='btn btn-outline-primary w-100'>DESCARGAR</button>
+                    </a>
+
+                    <br/>
+                    <br/>
+                    <br/>
+                    Si estás de acuerdo con la cotización, puedes contratar aquí:<br/><br/>
+                    <a class='href' href="/contratar?id=" id="modal-href-cont">
+                        <button class='btn btn-outline-primary w-100'>CONTRATAR</button>
+                    </a>
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="siniestro-modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-xl" role="document">
+
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img src="{% static "img/siniestro.png" %}"/>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal"
+                            onclick="sinistro_modal.hide()">
+                        CERRAR
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="position-fixed top-0 end-0 p-3" style="z-index: 11">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-body" style="color: darkred; font-size: 16px">
+                Llena los campos marcados
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block scripts %}
+    <script type="application/javascript">
+        let toast_error = new bootstrap.Toast(document.getElementById('liveToast'))
+        let quote_modal
+        let sinistro_modal
+        let menu_mobile;
+        let menu_mobile_mask;
+
+        document.addEventListener("DOMContentLoaded", function () {
+            quote_modal = new bootstrap.Modal(document.getElementById('quote-modal'), {
+                backdrop: 'static',
+                keyboard: false
+            });
+
+            sinistro_modal = new bootstrap.Modal(document.getElementById('siniestro-modal'), {})
+
+            menu_mobile = document.getElementById("layout-menu-mobile");
+            menu_mobile_mask = document.getElementById("layout-menu-mask");
+        })
+
+        function layout_menu() {
+            menu_mobile.classList.toggle("layout-menu-mobile-open");
+            menu_mobile_mask.classList.toggle("layout-menu-mask-open");
+
+        }
+
+        function quote() {
+            let req = new Ajax('/mascota/quote')
+            req.handler = quote_response
+            if (req.setParams('quote')) {
+                jamp_show()
+                req.send()
+            } else {
+                req.scroll(0, 0)
+                toast_error.show()
+            }
+        }
+
+        function quote_response(res) {
+            jamp_hide()
+            if (res['status'] === 1) {
+                mainModal.show("No se pudo completar la cotización, intente más tarde")
+            } else {
+                let href = document.getElementById('modal-href')
+                href.setAttribute('href', base_url + "/mascota/quote/download?id=" + res['id'])
+
+                let href2 = document.getElementById('modal-href-cont')
+                href2.setAttribute('href', base_url + "/mascota/contratar?id=" + res['number'])
+                quote_modal.show()
+            }
+        }
+
+        function select_amount(elem) {
+            document.getElementById('amount-text').innerText = new Intl.NumberFormat().format(elem.value)
+        }
+
+        function select_plan(elem) {
+            let option = elem.options[elem.selectedIndex]
+            let amount = document.getElementById('input-amount')
+            let min = option.getAttribute('data-min')
+            let max = option.getAttribute('data-max')
+
+            amount.setAttribute('min', min)
+            amount.setAttribute('max', max)
+
+            document.getElementById('amount-min').innerText = "min: $" + (new Intl.NumberFormat().format(min))
+            document.getElementById('amount-max').innerText = "min: $" + (new Intl.NumberFormat().format(max))
+
+            amount.value = option.getAttribute('data-min')
+            select_amount(amount)
+        }
+
+        function select_plan_scroll(value) {
+            let select = document.getElementById('select-plan')
+            select.value = value
+            select_plan(select)
+            document.getElementById('cotiza').scrollIntoView()
+        }
+
+        function email() {
+            let req = new Ajax('/email')
+            req.send()
+        }
+    </script>
+{% endblock scripts %}
